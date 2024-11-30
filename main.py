@@ -3,7 +3,8 @@ import os
 
 
 class Library:
-    def __init__(self, filename="library.json"):
+    """Класс библиотека."""
+    def __init__(self, filename):
         self.filename = filename
         self.books = []
         self.load_data()
@@ -13,8 +14,6 @@ class Library:
         if os.path.exists(self.filename):
             with open(self.filename, "r", encoding="utf-8") as file:
                 self.books = json.load(file)
-        else:
-            self.books = []
 
     def save_data(self):
         """Сохраняет данные в файл."""
@@ -89,7 +88,7 @@ class Library:
 
 
 def main():
-    library = Library()
+    library = Library("library.json")
 
     while True:
         print("\nМеню:")
